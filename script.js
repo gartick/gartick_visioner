@@ -92,17 +92,15 @@
     var container = document.querySelector('.mountains');
     if (!container) return;
 
-    // mountain.png = tinggi lancip (belakang), mountain2.png = lebar rendah (depan)
+    // mountain.png = lancip tinggi, mountain2.png = lebar rendah
+    // Lebar pakai vw biar otomatis muat di semua ukuran layar
     var layout = [
-      { src: 'mountain2.png', left: -4,  height: 28, opacity: 0.75 },
-      { src: 'mountain.png',  left: 8,   height: 38, opacity: 0.90 },
-      { src: 'mountain2.png', left: 24,  height: 24, opacity: 0.70 },
-      { src: 'mountain.png',  left: 36,  height: 42, opacity: 0.95 },
-      { src: 'mountain2.png', left: 52,  height: 26, opacity: 0.72 },
-      { src: 'mountain.png',  left: 62,  height: 36, opacity: 0.88 },
-      { src: 'mountain2.png', left: 77,  height: 22, opacity: 0.68 },
-      { src: 'mountain.png',  left: 86,  height: 40, opacity: 0.92 },
-      { src: 'mountain2.png', left: 98,  height: 25, opacity: 0.70 },
+      { src: 'mountain.png',  left: -3,  vw: 28, opacity: 0.90 },
+      { src: 'mountain2.png', left: 14,  vw: 24, opacity: 0.80 },
+      { src: 'mountain.png',  left: 30,  vw: 30, opacity: 0.95 },
+      { src: 'mountain2.png', left: 50,  vw: 25, opacity: 0.82 },
+      { src: 'mountain.png',  left: 64,  vw: 28, opacity: 0.88 },
+      { src: 'mountain2.png', left: 82,  vw: 24, opacity: 0.78 },
     ];
 
     layout.forEach(function(m) {
@@ -111,7 +109,7 @@
       img.className = 'mountain-sprite';
       img.alt = '';
       img.style.left = m.left + '%';
-      img.style.height = m.height + 'vh';
+      img.style.width = m.vw + 'vw';
       img.style.opacity = String(m.opacity);
       container.appendChild(img);
     });
