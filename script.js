@@ -110,7 +110,6 @@
       img.style.width = m.vw + 'vw';
       img.style.height = 'auto';
       img.style.filter = 'brightness(0.07)';
-      img.style.zIndex = '0';
       container.appendChild(img);
     });
 
@@ -135,7 +134,6 @@
       img.style.width = m.vw + 'vw';
       img.style.height = 'auto';
       img.style.opacity = String(m.opacity);
-      img.style.zIndex = '1';
       container.appendChild(img);
     });
   }
