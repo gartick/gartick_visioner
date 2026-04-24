@@ -269,18 +269,18 @@ body {
   100% { transform: rotate(0deg); }
 }
 
-/* Ground / terrain layer */
+/* Ground / terrain layer — di belakang pohon, mencakup area pohon berdiri */
 .ground {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 8vh;
+  height: 35vh;
   background:
     linear-gradient(to bottom,
-      rgba(45, 100, 60, 0.85) 0px,
-      rgba(20, 60, 35, 0.6)  4px,
-      transparent             10px
+      transparent             0%,
+      rgba(10, 30, 18, 0.72)  55%,
+      rgba(10, 25, 15, 0.92)  100%
     ),
     url('ground-texture.png');
   background-size: auto, 128px 128px;
