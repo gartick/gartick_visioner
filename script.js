@@ -87,6 +87,36 @@
     }
   }
 
+  // Generate pixel-art mountain sprites
+  function generateMountains() {
+    var container = document.querySelector('.mountains');
+    if (!container) return;
+
+    // mountain.png = tinggi lancip (belakang), mountain2.png = lebar rendah (depan)
+    var layout = [
+      { src: 'mountain2.png', left: -4,  height: 28, opacity: 0.75 },
+      { src: 'mountain.png',  left: 8,   height: 38, opacity: 0.90 },
+      { src: 'mountain2.png', left: 24,  height: 24, opacity: 0.70 },
+      { src: 'mountain.png',  left: 36,  height: 42, opacity: 0.95 },
+      { src: 'mountain2.png', left: 52,  height: 26, opacity: 0.72 },
+      { src: 'mountain.png',  left: 62,  height: 36, opacity: 0.88 },
+      { src: 'mountain2.png', left: 77,  height: 22, opacity: 0.68 },
+      { src: 'mountain.png',  left: 86,  height: 40, opacity: 0.92 },
+      { src: 'mountain2.png', left: 98,  height: 25, opacity: 0.70 },
+    ];
+
+    layout.forEach(function(m) {
+      var img = document.createElement('img');
+      img.src = m.src;
+      img.className = 'mountain-sprite';
+      img.alt = '';
+      img.style.left = m.left + '%';
+      img.style.height = m.height + 'vh';
+      img.style.opacity = String(m.opacity);
+      container.appendChild(img);
+    });
+  }
+
   // Generate pixel-art tree sprites with wind-sway animation
   function generateTrees() {
     var backContainer = document.querySelector('.trees-back');
@@ -216,6 +246,7 @@
     generateClouds();
     generateRain();
     generateFireflies();
+    generateMountains();
     generateTrees();
     setupReveal();
     setupMobileMenu();
