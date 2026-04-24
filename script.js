@@ -181,6 +181,108 @@
     }
   }
 
+  // Generate scene: house, campfire, walking character
+  function generateScene() {
+    var bg = document.querySelector('.bg-container');
+    if (!bg) return;
+
+    var scene = document.createElement('div');
+    scene.className = 'scene-wrapper';
+    bg.appendChild(scene);
+
+    // --- House ---
+    var houseWrap = document.createElement('div');
+    houseWrap.className = 'scene-house-wrap';
+
+    var houseImg = document.createElement('img');
+    houseImg.src = 'house.png';
+    houseImg.className = 'house-sprite';
+    houseImg.alt = '';
+    houseWrap.appendChild(houseImg);
+
+    // Window glow overlay
+    var glow = document.createElement('div');
+    glow.className = 'window-glow';
+    houseWrap.appendChild(glow);
+
+    scene.appendChild(houseWrap);
+
+    // --- Campfire ---
+    var cf = document.createElement('div');
+    cf.className = 'campfire-wrap';
+
+    // Ground glow
+    var cfGlow = document.createElement('div');
+    cfGlow.className = 'cf-glow';
+    cf.appendChild(cfGlow);
+
+    // Smoke
+    var smoke = document.createElement('div');
+    smoke.className = 'cf-smoke';
+    [
+      {d:'0s',   dx:'0px'},
+      {d:'0.6s', dx:'4px'},
+      {d:'1.2s', dx:'-4px'},
+      {d:'1.9s', dx:'2px'},
+    ].forEach(function(s) {
+      var sp = document.createElement('span');
+      sp.style.setProperty('--d', s.d);
+      sp.style.setProperty('--dx', s.dx);
+      smoke.appendChild(sp);
+    });
+    cf.appendChild(smoke);
+
+    // Flames
+    var fire = document.createElement('div');
+    fire.className = 'cf-fire';
+    ['f1','f2','f3'].forEach(function(cls) {
+      var sp = document.createElement('span');
+      sp.className = cls;
+      fire.appendChild(sp);
+    });
+    cf.appendChild(fire);
+
+    // Logs
+    var logs = document.createElement('div');
+    logs.className = 'cf-logs';
+    cf.appendChild(logs);
+
+    scene.appendChild(cf);
+
+    // --- Walking character (pixel art male) ---
+    var walker = document.createElement('div');
+    walker.className = 'scene-walker';
+
+    // Simple pixel art male SVG
+    walker.innerHTML =
+      '<svg class="walker-svg" viewBox="0 0 9 16" xmlns="http://www.w3.org/2000/svg">' +
+        // Hair
+        '<rect x="3" y="0" width="3" height="1" fill="#5c3317"/>' +
+        // Head
+        '<rect x="3" y="1" width="3" height="3" fill="#fcd9a0"/>' +
+        // Eyes
+        '<rect x="4" y="2" width="1" height="1" fill="#2d1a00"/>' +
+        // Shirt (body)
+        '<rect x="2" y="4" width="5" height="4" fill="#2d6a4f"/>' +
+        // Left arm
+        '<rect x="1" y="4" width="1" height="3" fill="#fcd9a0"/>' +
+        // Right arm
+        '<rect x="7" y="4" width="1" height="3" fill="#fcd9a0"/>' +
+        // Belt
+        '<rect x="2" y="7" width="5" height="1" fill="#3d200e"/>' +
+        // Left leg
+        '<rect x="2" y="8" width="2" height="4" fill="#3d2b1a"/>' +
+        // Right leg
+        '<rect x="5" y="8" width="2" height="4" fill="#3d2b1a"/>' +
+        // Left shoe
+        '<rect x="2" y="12" width="2" height="1" fill="#1a0f00"/>' +
+        // Right shoe
+        '<rect x="5" y="12" width="2" height="1" fill="#1a0f00"/>' +
+      '</svg>';
+
+    scene.appendChild(walker);
+  }
+
   // Scroll reveal animation
   function setupReveal() {
     const reveals = document.querySelectorAll('.reveal');
@@ -272,6 +374,7 @@
     generateFireflies();
     generateMountains();
     generateTrees();
+    generateScene();
     setupReveal();
     setupMobileMenu();
     setupLoader();
