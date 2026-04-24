@@ -94,13 +94,16 @@
 
     // mountain.png = lancip tinggi, mountain2.png = lebar rendah
     // Lebar pakai vw biar otomatis muat di semua ukuran layar
+    // Opacity seragam tinggi biar semua gelap konsisten
     var layout = [
-      { src: 'mountain.png',  left: -3,  vw: 28, opacity: 0.90 },
-      { src: 'mountain2.png', left: 14,  vw: 24, opacity: 0.80 },
-      { src: 'mountain.png',  left: 30,  vw: 30, opacity: 0.95 },
-      { src: 'mountain2.png', left: 50,  vw: 25, opacity: 0.82 },
-      { src: 'mountain.png',  left: 64,  vw: 28, opacity: 0.88 },
-      { src: 'mountain2.png', left: 82,  vw: 24, opacity: 0.78 },
+      { src: 'mountain2.png', left: -6,  vw: 30, opacity: 0.95 },
+      { src: 'mountain.png',  left: 8,   vw: 36, opacity: 1.00 },
+      { src: 'mountain2.png', left: 22,  vw: 26, opacity: 0.90 },
+      { src: 'mountain.png',  left: 34,  vw: 40, opacity: 1.00 },
+      { src: 'mountain2.png', left: 52,  vw: 28, opacity: 0.92 },
+      { src: 'mountain.png',  left: 62,  vw: 34, opacity: 0.98 },
+      { src: 'mountain2.png', left: 78,  vw: 26, opacity: 0.90 },
+      { src: 'mountain.png',  left: 88,  vw: 32, opacity: 0.95 },
     ];
 
     layout.forEach(function(m) {
