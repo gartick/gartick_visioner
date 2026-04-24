@@ -92,18 +92,38 @@
     var container = document.querySelector('.mountains');
     if (!container) return;
 
-    // mountain.png = lancip tinggi, mountain2.png = lebar rendah
-    // Lebar pakai vw biar otomatis muat di semua ukuran layar
-    // Opacity seragam tinggi biar semua gelap konsisten
+    // Layer 1: Shadow mountains — hitam pekat, paling belakang
+    var shadows = [
+      { src: 'mountain.png',  left: -8,  vw: 44 },
+      { src: 'mountain2.png', left: 16,  vw: 36 },
+      { src: 'mountain.png',  left: 38,  vw: 48 },
+      { src: 'mountain2.png', left: 60,  vw: 38 },
+      { src: 'mountain.png',  left: 78,  vw: 42 },
+    ];
+
+    shadows.forEach(function(m) {
+      var img = document.createElement('img');
+      img.src = m.src;
+      img.className = 'mountain-sprite';
+      img.alt = '';
+      img.style.left = m.left + '%';
+      img.style.width = m.vw + 'vw';
+      img.style.height = 'auto';
+      img.style.filter = 'brightness(0.07)';
+      img.style.zIndex = '0';
+      container.appendChild(img);
+    });
+
+    // Layer 2: Gunung utama — gelap bernuansa malam, di depan shadow
     var layout = [
-      { src: 'mountain2.png', left: -6,  vw: 30, opacity: 0.95 },
-      { src: 'mountain.png',  left: 8,   vw: 36, opacity: 1.00 },
-      { src: 'mountain2.png', left: 22,  vw: 26, opacity: 0.90 },
-      { src: 'mountain.png',  left: 34,  vw: 40, opacity: 1.00 },
-      { src: 'mountain2.png', left: 52,  vw: 28, opacity: 0.92 },
-      { src: 'mountain.png',  left: 62,  vw: 34, opacity: 0.98 },
-      { src: 'mountain2.png', left: 78,  vw: 26, opacity: 0.90 },
-      { src: 'mountain.png',  left: 88,  vw: 32, opacity: 0.95 },
+      { src: 'mountain2.png', left: -6,  vw: 34, opacity: 0.95 },
+      { src: 'mountain.png',  left: 8,   vw: 42, opacity: 1.00 },
+      { src: 'mountain2.png', left: 22,  vw: 30, opacity: 0.90 },
+      { src: 'mountain.png',  left: 34,  vw: 46, opacity: 1.00 },
+      { src: 'mountain2.png', left: 52,  vw: 32, opacity: 0.92 },
+      { src: 'mountain.png',  left: 62,  vw: 38, opacity: 0.98 },
+      { src: 'mountain2.png', left: 78,  vw: 30, opacity: 0.90 },
+      { src: 'mountain.png',  left: 88,  vw: 36, opacity: 0.95 },
     ];
 
     layout.forEach(function(m) {
@@ -115,6 +135,7 @@
       img.style.width = m.vw + 'vw';
       img.style.height = 'auto';
       img.style.opacity = String(m.opacity);
+      img.style.zIndex = '1';
       container.appendChild(img);
     });
   }
