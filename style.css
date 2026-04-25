@@ -100,30 +100,62 @@ body {
   50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 8px #fff; }
 }
 
-/* Meteors */
+/* Meteors — streak head + frame-by-frame trail sparks */
 .meteor {
   position: absolute;
-  width: 2px;
+  width: 80px;
   height: 2px;
-  background: #fff;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(34, 211, 238, 0.15) 30%,
+    rgba(34, 211, 238, 0.55) 70%,
+    rgba(167, 243, 208, 0.95) 95%,
+    #ffffff 100%
+  );
+  border-radius: 1px;
   box-shadow:
-    0 0 4px #fff,
-    -1px 0 0 var(--glow-cyan),
-    -2px 0 0 var(--glow-cyan),
-    -3px 0 0 rgba(34, 211, 238, 0.8),
-    -5px 0 0 rgba(34, 211, 238, 0.6),
-    -8px 0 0 rgba(34, 211, 238, 0.3),
-    -12px 0 0 rgba(34, 211, 238, 0.1);
-  animation: meteor-fall var(--meteor-speed, 4s) linear infinite;
+    0 0 6px rgba(167, 243, 208, 0.6),
+    0 0 12px rgba(34, 211, 238, 0.35);
+  transform-origin: 100% 50%;
+  animation: meteor-fly var(--meteor-speed, 4s) linear infinite;
   animation-delay: var(--meteor-delay, 0s);
   opacity: 0;
 }
 
-@keyframes meteor-fall {
-  0% { transform: translate(0, 0) rotate(45deg); opacity: 0; }
-  5% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { transform: translate(-600px, 600px) rotate(45deg); opacity: 0; }
+.meteor::before,
+.meteor::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4px #fff, 0 0 8px var(--glow-cyan);
+  transform: translateY(-50%);
+}
+
+.meteor::before {
+  right: 20%;
+  animation: spark-flicker 0.18s steps(2) infinite;
+}
+
+.meteor::after {
+  right: 45%;
+  animation: spark-flicker 0.22s steps(2) infinite 0.09s;
+}
+
+@keyframes spark-flicker {
+  0%, 49%   { opacity: 1;   transform: translateY(-50%) scale(1);   }
+  50%, 100% { opacity: 0.2; transform: translateY(-50%) scale(0.4); }
+}
+
+@keyframes meteor-fly {
+  0%   { transform: translate(0, 0)             rotate(135deg); opacity: 0; }
+  8%   { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { transform: translate(-640px, 640px)    rotate(135deg); opacity: 0; }
 }
 
 /* Moon */
@@ -211,14 +243,15 @@ body {
   100% { transform: translateY(110vh); opacity: 0.3; }
 }
 
-/* Mountains layer — dinaikkan agar puncak kelihatan di atas pohon */
+/* Mountains layer — basis duduk di garis horizon (di atas ground) */
 .mountains {
   position: absolute;
-  bottom: 30vh;
+  bottom: 14vh;
   left: 0;
   width: 100%;
-  height: 50vh;
+  height: 46vh;
   overflow: visible;
+  z-index: 2;
 }
 
 .mountain-sprite {
@@ -269,13 +302,13 @@ body {
   100% { transform: rotate(0deg); }
 }
 
-/* Ground / terrain layer — di belakang pohon, mencakup area pohon berdiri */
+/* Ground / terrain layer — di belakang pohon, tidak mencapai zona gunung */
 .ground {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 35vh;
+  height: 22vh;
   background:
     linear-gradient(to bottom,
       transparent             0%,
@@ -286,6 +319,7 @@ body {
   background-size: auto, 128px 128px;
   background-repeat: repeat-x, repeat;
   image-rendering: pixelated;
+  z-index: 1;
 }
 
 /* Fog layer */
@@ -1274,8 +1308,8 @@ footer::before {
 
 .scene-wrapper {
   position: absolute;
-  right: 5%;
-  bottom: 7vh;
+  right: 7%;
+  bottom: 10vh;
   display: flex;
   align-items: flex-end;
   pointer-events: none;
@@ -1288,7 +1322,7 @@ footer::before {
 }
 
 .house-sprite {
-  height: 20vh;
+  height: 17vh;
   width: auto;
   display: block;
   image-rendering: pixelated;
@@ -1424,6 +1458,12 @@ footer::before {
 @keyframes walk-bob {
   from { transform: translateY(0); }
   to   { transform: translateY(-2px); }
+}
+
+/* Tablet & medium screens — turunkan ukuran rumah */
+@media (max-width: 768px) {
+  .scene-wrapper { right: 3%; bottom: 9vh; }
+  .house-sprite { height: 14vh; }
 }
 
 /* Small screens tuning */
