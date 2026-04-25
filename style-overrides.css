@@ -1,0 +1,168 @@
+/* ============================================================
+   STYLE OVERRIDES
+   Disinkronkan via MCP karena git push proxy intermittent 503.
+   File ini di-link SETELAH style.css di index.html, sehingga
+   cascade akan menimpa rule-rule asli yang lebih lama.
+   ============================================================ */
+
+.rain { display: none !important; }
+
+.bg-container {
+  position: absolute;
+  inset: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130vh;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Wide black blend transition antara bg-container & bg-pond */
+.bg-transition {
+  position: absolute;
+  top: 110vh;
+  left: 0;
+  width: 100%;
+  height: 80vh;
+  background:
+    /* strip horizontal supaya tidak mulus */
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.123) 0,
+      rgba(0, 0, 0, 0.055) 15px,
+      transparent 2px,
+      transparent 5px
+    ),
+    /* gradien utama: transparan -> hitam pekat -> biru tua -> transparan */
+    linear-gradient(
+      180deg,
+      transparent             0%,
+      rgba(0, 0, 0, 0.205)    15%,
+      #000                   35%,
+      #061a28                55%,
+      #0a3a55                75%,
+      rgba(20, 80, 120, 0.3) 92%,
+      transparent           100%
+    );
+  z-index: -9;
+  pointer-events: none;
+}
+
+/* Background kedua: mystical pond */
+.bg-pond {
+  position: absolute;
+  top: 180vh;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  background-color: #051221;
+  background-image: url('tumblr_7e646d701b09619cbd7847b65ea580f0_01665962_1280.gif');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -10;
+  pointer-events: none;
+}
+
+/* Mobile: matikan fixed-attachment (iOS Safari fallback) */
+@media (max-width: 768px) {
+  .bg-pond {
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+}
+
+/* Layout fixes — gunung & terrain & pohon */
+.mountains {
+  bottom: 14vh;
+  height: 46vh;
+  z-index: auto;
+}
+
+.ground {
+  height: 35vh;
+  z-index: auto;
+}
+
+.trees-front {
+  bottom: 1vh;
+  height: 28vh;
+  z-index: 2;  /* tetap di depan rumah meski scene di-append belakangan */
+}
+
+/* Scene: tanam rumah di area tanah lapang */
+.scene-wrapper {
+  right: 7%;
+  bottom: 2vh;
+}
+
+.house-sprite {
+  height: 13vh;
+}
+
+@media (max-width: 768px) {
+  .scene-wrapper { right: 3%; bottom: 1vh; }
+  .house-sprite { height: 11vh; }
+}
+
+/* Meteor — streak head + frame-by-frame trail sparks */
+.meteor {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(34, 211, 238, 0.15) 30%,
+    rgba(34, 211, 238, 0.55) 70%,
+    rgba(167, 243, 208, 0.95) 95%,
+    #ffffff 100%
+  );
+  border-radius: 1px;
+  box-shadow:
+    0 0 6px rgba(167, 243, 208, 0.6),
+    0 0 12px rgba(34, 211, 238, 0.35);
+  transform-origin: 100% 50%;
+  animation: meteor-fly var(--meteor-speed, 4s) linear infinite;
+  animation-delay: var(--meteor-delay, 0s);
+  opacity: 0;
+}
+
+.meteor::before,
+.meteor::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4px #fff, 0 0 8px var(--glow-cyan);
+  transform: translateY(-50%);
+}
+
+.meteor::before {
+  right: 20%;
+  animation: spark-flicker 0.18s steps(2) infinite;
+}
+
+.meteor::after {
+  right: 45%;
+  animation: spark-flicker 0.22s steps(2) infinite 0.09s;
+}
+
+@keyframes spark-flicker {
+  0%, 49%   { opacity: 1;   transform: translateY(-50%) scale(1);   }
+  50%, 100% { opacity: 0.2; transform: translateY(-50%) scale(0.4); }
+}
+
+@keyframes meteor-fly {
+  0%   { transform: translate(0, 0)             rotate(135deg); opacity: 0; }
+  8%   { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { transform: translate(-640px, 640px)    rotate(135deg); opacity: 0; }
+}

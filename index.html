@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>Vision Plaza — Home</title>
+  <meta name="description" content="Vision Plaza — a mystical pixel fantasy realm of guides, portfolio, and creative adventures.">
+  <meta name="theme-color" content="#0a1a14">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-overrides.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230a1a14'/><rect x='2' y='2' width='12' height='12' fill='%234ade80'/><rect x='5' y='5' width='6' height='6' fill='%230a1a14'/></svg>">
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-text">LOADING...</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+    <div class="loader-text" style="font-size: 0.6rem; opacity: 0.7;">Vision Plaza</div>
+  </div>
+
+  <!-- BACKGROUND -->
+  <div class="bg-container">
+    <div class="sky-gradient"></div>
+    <div class="stars"></div>
+    <div class="moon"></div>
+    <div class="rain"></div>
+    <div class="ground"></div>
+    <div class="mountains"></div>
+    <div class="trees-back"></div>
+    <div class="fog"></div>
+    <div class="trees-front"></div>
+  </div>
+
+  <!-- BACKGROUND TRANSITION (wide black blend) -->
+  <div class="bg-transition"></div>
+
+  <!-- BACKGROUND 2 — mystical pond -->
+  <div class="bg-pond"></div>
+
+  <div class="scanlines"></div>
+  <div class="vignette"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="logo">GARTICK VISION</a>
+    <button class="mobile-toggle" aria-label="Menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">HOME</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="guide.html">GUIDE</a></li>
+      <li><a href="portfolio.html">PORTFOLIO</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="welcome-tag">★ PLAYER 1 HAS ENTERED ★</div>
+    <h1 class="hero-title">
+      HI, WELCOME TO<br>
+      <span class="accent">JULIAN PLAZA</span>
+    </h1>
+    <p class="hero-subtitle" data-typewriter="Just an ordinary psychology student pursuing my interests"></p>
+    <div class="btn-group">
+      <a href="guide.html" class="pixel-btn primary">
+        <span>📖</span> GUIDE
+      </a>
+      <a href="portfolio.html" class="pixel-btn purple">
+        <span>🎬</span> PORTFOLIO
+      </a>
+      <a href="#about" class="pixel-btn">
+        <span>⚔</span> ABOUT ME
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section reveal" id="about">
+    <h2 class="section-title">ABOUT ME</h2>
+    <div class="section-divider">
+      <span class="pixel"></span>
+      <span class="pixel"></span>
+      <span class="pixel"></span>
+    </div>
+
+    <div class="about-card">
+      <span class="corner-tl"></span>
+      <span class="corner-tr"></span>
+      <div class="avatar-frame">
+        <!-- Pixel avatar SVG -->
+        <svg class="avatar-sprite" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <!-- Hair -->
+          <rect x="3" y="2" width="10" height="2" fill="#1e4a38"/>
+          <rect x="2" y="3" width="12" height="2" fill="#1e4a38"/>
+          <rect x="2" y="5" width="2" height="3" fill="#1e4a38"/>
+          <rect x="12" y="5" width="2" height="3" fill="#1e4a38"/>
+          <!-- Face -->
+          <rect x="4" y="5" width="8" height="4" fill="#fde68a"/>
+          <!-- Eyes -->
+          <rect x="5" y="6" width="2" height="2" fill="#4ade80"/>
+          <rect x="9" y="6" width="2" height="2" fill="#4ade80"/>
+          <!-- Mouth -->
+          <rect x="7" y="8" width="2" height="1" fill="#7f1d1d"/>
+          <!-- Body -->
+          <rect x="4" y="9" width="8" height="5" fill="#10b981"/>
+          <rect x="5" y="10" width="6" height="1" fill="#fbbf24"/>
+          <rect x="7" y="11" width="2" height="3" fill="#fbbf24"/>
+          <!-- Arms -->
+          <rect x="3" y="9" width="1" height="3" fill="#fde68a"/>
+          <rect x="12" y="9" width="1" height="3" fill="#fde68a"/>
+          <!-- Legs -->
+          <rect x="5" y="14" width="2" height="2" fill="#1e3a8a"/>
+          <rect x="9" y="14" width="2" height="2" fill="#1e3a8a"/>
+        </svg>
+      </div>
+
+      <div class="about-text">
+        <h3>★ JULIAN THE CREATOR ★</h3>
+        <p>Halo pengembara! Aku seorang 3D artist & web creator yang tinggal di dunia pixel fantasy. Sudah bertahun-tahun bikin mob, senjata, armor, dan website kecil sebagai hobi.</p>
+        <p class="text-gold" style="font-size: 1.1rem;">► "Setiap pixel punya cerita, setiap klik adalah pintu menuju dunia baru."</p>
+        <div class="stat-row">
+          <span class="stat">LVL <span class="value">99</span></span>
+          <span class="stat">CLASS <span class="value">CREATOR</span></span>
+          <span class="stat">HP <span class="value">∞</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section class="section reveal" id="contact">
+    <h2 class="section-title">CONNECT</h2>
+    <div class="section-divider">
+      <span class="pixel"></span>
+      <span class="pixel"></span>
+      <span class="pixel"></span>
+    </div>
+    <p class="section-subtitle">Let's connect in the digital realm! ★</p>
+
+    <div class="social-container">
+      <a href="#" target="_blank" rel="noopener" class="social-btn youtube">
+        <svg class="icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="3" width="14" height="10" fill="#ff0000"/>
+          <rect x="2" y="4" width="12" height="8" fill="#7f1d1d"/>
+          <polygon points="6,6 6,10 11,8" fill="#fff"/>
+        </svg>
+        YOUTUBE
+      </a>
+      <a href="#" target="_blank" rel="noopener" class="social-btn discord">
+        <svg class="icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="3" width="12" height="10" fill="#5865f2"/>
+          <rect x="4" y="5" width="2" height="3" fill="#fff"/>
+          <rect x="10" y="5" width="2" height="3" fill="#fff"/>
+          <rect x="4" y="10" width="8" height="2" fill="#fff"/>
+          <rect x="3" y="11" width="1" height="2" fill="#5865f2"/>
+          <rect x="12" y="11" width="1" height="2" fill="#5865f2"/>
+        </svg>
+        DISCORD
+      </a>
+    </div>
+  </section>
+
+  <!-- ACTION CARDS -->
+  <section class="section reveal">
+    <h2 class="section-title">EXPLORE THE REALM</h2>
+    <div class="section-divider">
+      <span class="pixel"></span>
+      <span class="pixel"></span>
+      <span class="pixel"></span>
+    </div>
+    <p class="section-subtitle">Choose the adventure you wish to begin</p>
+
+    <div class="action-grid">
+      <a href="guide.html" class="action-card">
+        <span class="action-icon">📜</span>
+        <h3>GUIDE</h3>
+        <p>Guide on how to progress in the Shounen Fantasy addon I created.</p>
+        <span class="pixel-btn primary">ENTER ►</span>
+      </a>
+
+      <a href="portfolio.html" class="action-card purple">
+        <span class="action-icon" style="color: var(--magic-pink); text-shadow: 0 0 20px var(--magic-pink);">🎥</span>
+        <h3>PORTFOLIO</h3>
+        <p>Some of my works.</p>
+        <span class="pixel-btn purple">ENTER ►</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-heart">MADE WITH <span class="heart">❤</span> IN PIXEL</div>
+    <p class="footer-copy">© 2026 Gartick Vision · ALL RIGHTS RESERVED</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
