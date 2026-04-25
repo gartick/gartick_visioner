@@ -148,7 +148,7 @@
 
     var srcs = ['tree1.png', 'tree2.png'];
 
-    // Back trees — smaller, dimmer, packed tighter
+    // Back trees — tersebar merata di seluruh lebar, jitter simetrik
     if (backContainer) {
       for (var i = 0; i < 11; i++) {
         var tb = document.createElement('img');
@@ -164,19 +164,34 @@
       }
     }
 
-    // Front trees — bigger, more opaque, spaced wider
+    // Front trees — kiri 0..70% (skip area rumah), + 2 medium di kanan jauh
     if (frontContainer) {
-      for (var j = 0; j < 9; j++) {
+      for (var j = 0; j < 7; j++) {
         var tf = document.createElement('img');
         tf.src = srcs[j % 2];
         tf.className = 'tree-sprite';
         tf.alt = '';
-        tf.style.left = (j * 12 + (Math.random() * 5 - 2)) + '%';
+        tf.style.left = (j * 10 + (Math.random() * 4 - 2)) + '%';
         tf.style.height = (20 + Math.random() * 8) + 'vh';
         tf.style.opacity = String(0.75 + Math.random() * 0.25);
         tf.style.setProperty('--sway-speed', (4 + Math.random() * 2.5) + 's');
         tf.style.setProperty('--sway-delay', '-' + (Math.random() * 5) + 's');
         frontContainer.appendChild(tf);
+      }
+
+      // Pohon medium di kanan jauh, tidak menabrak rumah
+      var rightLefts = [88, 96];
+      for (var k = 0; k < rightLefts.length; k++) {
+        var tr = document.createElement('img');
+        tr.src = srcs[k % 2];
+        tr.className = 'tree-sprite';
+        tr.alt = '';
+        tr.style.left = (rightLefts[k] + (Math.random() * 2 - 1)) + '%';
+        tr.style.height = (16 + Math.random() * 4) + 'vh';
+        tr.style.opacity = String(0.7 + Math.random() * 0.2);
+        tr.style.setProperty('--sway-speed', (4 + Math.random() * 2) + 's');
+        tr.style.setProperty('--sway-delay', '-' + (Math.random() * 4) + 's');
+        frontContainer.appendChild(tr);
       }
     }
   }
@@ -188,7 +203,12 @@
 
     var scene = document.createElement('div');
     scene.className = 'scene-wrapper';
-    bg.appendChild(scene);
+    var frontEl = bg.querySelector('.trees-front');
+    if (frontEl) {
+      bg.insertBefore(scene, frontEl);
+    } else {
+      bg.appendChild(scene);
+    }
 
     // --- House ---
     var houseWrap = document.createElement('div');
